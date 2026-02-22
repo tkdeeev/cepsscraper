@@ -6,7 +6,7 @@ import { hoursPerDayBelowThreshold } from '../utils/dataLoader';
 
 const COLORS = { line: '#00e5ff', ref: '#ff5252', area: 'rgba(0,229,255,0.1)' };
 
-export default function ThresholdAnalysis({ data, threshold }) {
+export default function ThresholdAnalysis({ data, threshold , currency}) {
     const chartData = useMemo(() => hoursPerDayBelowThreshold(data, threshold), [data, threshold]);
 
     // Moving average (7-day)
@@ -33,7 +33,7 @@ export default function ThresholdAnalysis({ data, threshold }) {
 
     return (
         <div className="chart-card">
-            <h3>⚡ Hours Below {threshold} EUR/MWh Per Day</h3>
+            <h3>⚡ Hours Below {threshold} {currency.toUpperCase()}/MWh Per Day</h3>
             <p className="chart-subtitle">Shows daily count of hours where price is below your threshold — higher = more opportunity</p>
             <ResponsiveContainer width="100%" height={350}>
                 <LineChart data={withMA} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>

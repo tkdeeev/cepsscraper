@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 import { negativePriceHoursByMonth } from '../utils/dataLoader';
 
-export default function NegativePriceAnalysis({ data }) {
+export default function NegativePriceAnalysis({ data , currency}) {
     const chartData = useMemo(() => negativePriceHoursByMonth(data), [data]);
 
     const customTooltip = ({ active, payload }) => {
@@ -24,7 +24,7 @@ export default function NegativePriceAnalysis({ data }) {
     return (
         <div className="chart-card">
             <h3>💰 Negative & Zero Price Hours</h3>
-            <p className="chart-subtitle">Monthly count of hours with ≤0 EUR/MWh — peak stabilization revenue opportunities</p>
+            <p className="chart-subtitle">Monthly count of hours with ≤0 {currency.toUpperCase()}/MWh — peak stabilization revenue opportunities</p>
             <ResponsiveContainer width="100%" height={350}>
                 <BarChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />

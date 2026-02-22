@@ -47,11 +47,10 @@ body {
   padding: 0 24px 60px;
 }
 
-/* ─── Header ───────────────────────────────────────────────── */
 .app-header {
   padding: 40px 0 24px;
   border-bottom: 1px solid var(--border-subtle);
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .app-header h1 {
@@ -69,6 +68,88 @@ body {
   font-size: 0.95rem;
   font-weight: 400;
 }
+
+/* --- Tab Navigation --- */
+.tab-nav {
+  display: flex;
+  gap: 4px;
+  padding: 16px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  overflow-x: auto;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+.tab-btn.active {
+  background: var(--bg-card);
+  color: var(--accent);
+  border-color: var(--border-accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.tab-icon {
+  font-size: 1.1rem;
+}
+
+/* --- Spark Spread Grid Layout --- */
+.spark-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.spark-chart h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* --- Chart Description --- */
+.chart-header {
+  margin-bottom: 16px;
+}
+
+.chart-description {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+.chart-description strong {
+  color: var(--accent);
+}
+
+.chart-card-full {
+  grid-column: 1 / -1;
+}
+
 
 /* ─── Controls Bar ─────────────────────────────────────────── */
 .controls-bar {
@@ -266,6 +347,9 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .chart-subtitle {
@@ -273,6 +357,63 @@ body {
   color: var(--text-dim);
   margin-bottom: 20px;
 }
+
+/* --- Info Tooltip Icon --- */
+.info-tooltip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+  color: var(--accent);
+  cursor: help;
+  border-radius: 50%;
+  background: var(--accent-glow);
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.info-tooltip:hover {
+  background: rgba(129, 140, 248, 0.3);
+}
+
+/* --- Chart Explainer Box --- */
+.chart-explainer {
+  background: rgba(129, 140, 248, 0.06);
+  border: 1px solid rgba(129, 140, 248, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.chart-explainer p {
+  margin: 4px 0;
+}
+
+.chart-explainer strong {
+  color: var(--text-primary);
+}
+
+/* --- Chart Footnote --- */
+.chart-footnote {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-subtle);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* --- Highlight colors --- */
+.highlight-positive { color: var(--green); }
+.highlight-negative { color: var(--red); }
+.text-dim { color: var(--text-dim); font-size: 0.78rem; }
+
 
 .chart-row-2col {
   display: grid;
@@ -459,6 +600,10 @@ body {
     grid-template-columns: 1fr;
   }
   
+  .spark-grid {
+    grid-template-columns: 1fr;
+  }
+
   .controls-bar {
     flex-direction: column;
     align-items: stretch;
@@ -470,6 +615,15 @@ body {
 
   .stats-grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .tab-nav {
+    gap: 2px;
+  }
+
+  .tab-btn {
+    padding: 8px 14px;
+    font-size: 0.82rem;
   }
 }
 

@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 import { monthlyStats } from '../utils/dataLoader';
 
-export default function MonthlyStats({ data }) {
+export default function MonthlyStats({ data , currency}) {
     const chartData = useMemo(() => monthlyStats(data), [data]);
 
     const customTooltip = ({ active, payload }) => {
@@ -13,9 +13,9 @@ export default function MonthlyStats({ data }) {
         return (
             <div className="chart-tooltip">
                 <p className="tooltip-date">{d.month}</p>
-                <p><span style={{ color: '#818cf8' }}>●</span> Average: <strong>{d.avgPrice} EUR/MWh</strong></p>
-                <p><span style={{ color: '#00e676' }}>●</span> Min: <strong>{d.minPrice} EUR/MWh</strong></p>
-                <p><span style={{ color: '#ff5252' }}>●</span> Max: <strong>{d.maxPrice} EUR/MWh</strong></p>
+                <p><span style={{ color: '#818cf8' }}>●</span> Average: <strong>{d.avgPrice} {currency.toUpperCase()}/MWh</strong></p>
+                <p><span style={{ color: '#00e676' }}>●</span> Min: <strong>{d.minPrice} {currency.toUpperCase()}/MWh</strong></p>
+                <p><span style={{ color: '#ff5252' }}>●</span> Max: <strong>{d.maxPrice} {currency.toUpperCase()}/MWh</strong></p>
             </div>
         );
     };

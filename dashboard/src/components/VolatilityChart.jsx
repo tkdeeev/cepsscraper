@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 import { dailyVolatility } from '../utils/dataLoader';
 
-export default function VolatilityChart({ data }) {
+export default function VolatilityChart({ data , currency}) {
     const chartData = useMemo(() => dailyVolatility(data), [data]);
 
     // 7-day MA of spread
@@ -23,9 +23,9 @@ export default function VolatilityChart({ data }) {
         return (
             <div className="chart-tooltip">
                 <p className="tooltip-date">{d.date}</p>
-                <p><span style={{ color: '#f472b6' }}>●</span> Spread (max-min): <strong>{d.spread} EUR/MWh</strong></p>
-                <p><span style={{ color: '#a78bfa' }}>●</span> Std Dev: <strong>{d.stdDev} EUR/MWh</strong></p>
-                <p>Daily avg: {d.avg} EUR/MWh</p>
+                <p><span style={{ color: '#f472b6' }}>●</span> Spread (max-min): <strong>{d.spread} {currency.toUpperCase()}/MWh</strong></p>
+                <p><span style={{ color: '#a78bfa' }}>●</span> Std Dev: <strong>{d.stdDev} {currency.toUpperCase()}/MWh</strong></p>
+                <p>Daily avg: {d.avg} {currency.toUpperCase()}/MWh</p>
             </div>
         );
     };

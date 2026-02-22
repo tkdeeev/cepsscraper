@@ -1,4 +1,4 @@
-export default function StatsCards({ summary, threshold }) {
+export default function StatsCards({ summary, threshold , currency}) {
     const cards = [
         {
             label: 'Average Price',

@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 import { avgPriceByHour } from '../utils/dataLoader';
 
-export default function HourlyProfile({ data }) {
+export default function HourlyProfile({ data , currency}) {
     const chartData = useMemo(() => avgPriceByHour(data), [data]);
 
     const minPrice = Math.min(...chartData.map(d => d.avgPrice));
@@ -23,7 +23,7 @@ export default function HourlyProfile({ data }) {
         return (
             <div className="chart-tooltip">
                 <p className="tooltip-date">Hour {d.hour}:00 – {d.hour}:59</p>
-                <p>Average price: <strong>{d.avgPrice} EUR/MWh</strong></p>
+                <p>Average price: <strong>{d.avgPrice} {currency.toUpperCase()}/MWh</strong></p>
             </div>
         );
     };

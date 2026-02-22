@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 import { weekdayWeekendProfile } from '../utils/dataLoader';
 
-export default function WeekdayWeekendChart({ data }) {
+export default function WeekdayWeekendChart({ data , currency}) {
     const chartData = useMemo(() => weekdayWeekendProfile(data), [data]);
 
     const customTooltip = ({ active, payload }) => {
@@ -13,9 +13,9 @@ export default function WeekdayWeekendChart({ data }) {
         return (
             <div className="chart-tooltip">
                 <p className="tooltip-date">Hour {d.hour}:00</p>
-                <p><span style={{ color: '#818cf8' }}>●</span> Weekday avg: <strong>{d.weekday} EUR/MWh</strong></p>
-                <p><span style={{ color: '#22d3ee' }}>●</span> Weekend avg: <strong>{d.weekend} EUR/MWh</strong></p>
-                <p>Difference: <strong>{(d.weekday - d.weekend).toFixed(2)} EUR/MWh</strong></p>
+                <p><span style={{ color: '#818cf8' }}>●</span> Weekday avg: <strong>{d.weekday} {currency.toUpperCase()}/MWh</strong></p>
+                <p><span style={{ color: '#22d3ee' }}>●</span> Weekend avg: <strong>{d.weekend} {currency.toUpperCase()}/MWh</strong></p>
+                <p>Difference: <strong>{(d.weekday - d.weekend).toFixed(2)} {currency.toUpperCase()}/MWh</strong></p>
             </div>
         );
     };

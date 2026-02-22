@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 import { dailyAveragePrice } from '../utils/dataLoader';
 
-export default function DailyAverageChart({ data, threshold }) {
+export default function DailyAverageChart({ data, threshold , currency}) {
     const chartData = useMemo(() => dailyAveragePrice(data), [data]);
 
     // 7-day moving average
@@ -23,8 +23,8 @@ export default function DailyAverageChart({ data, threshold }) {
         return (
             <div className="chart-tooltip">
                 <p className="tooltip-date">{d.date}</p>
-                <p><span style={{ color: '#818cf8' }}>●</span> Daily avg: <strong>{d.avgPrice} EUR/MWh</strong></p>
-                <p><span style={{ color: '#fbbf24' }}>●</span> 7-day MA: <strong>{d.ma7} EUR/MWh</strong></p>
+                <p><span style={{ color: '#818cf8' }}>●</span> Daily avg: <strong>{d.avgPrice} {currency.toUpperCase()}/MWh</strong></p>
+                <p><span style={{ color: '#fbbf24' }}>●</span> 7-day MA: <strong>{d.ma7} {currency.toUpperCase()}/MWh</strong></p>
             </div>
         );
     };

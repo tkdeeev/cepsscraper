@@ -19,7 +19,7 @@ function priceToColor(price, min, max) {
     }
 }
 
-export default function PriceHeatmap({ data }) {
+export default function PriceHeatmap({ data, currency }) {
     const heatData = useMemo(() => priceHeatmapData(data), [data]);
 
     const { months, priceMap, minPrice, maxPrice } = useMemo(() => {
@@ -61,7 +61,7 @@ export default function PriceHeatmap({ data }) {
                                         key={`${month}-${hour}`}
                                         className="heatmap-cell"
                                         style={{ backgroundColor: color }}
-                                        title={`${month} H${hour}: ${price != null ? price + ' EUR/MWh' : 'N/A'}`}
+                                        title={`${month} H${hour}: ${price != null ? price + ` ${currency.toUpperCase()}/MWh` : 'N/A'}`}
                                     >
                                         {price != null && months.length <= 14 ? (
                                             <span className="heatmap-value">{price.toFixed(0)}</span>

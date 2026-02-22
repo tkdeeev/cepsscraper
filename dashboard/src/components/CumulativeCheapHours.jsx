@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 import { cumulativeCheapHours } from '../utils/dataLoader';
 
-export default function CumulativeCheapHours({ data, threshold }) {
+export default function CumulativeCheapHours({ data, threshold , currency}) {
     const chartData = useMemo(() => cumulativeCheapHours(data, threshold), [data, threshold]);
 
     const customTooltip = ({ active, payload }) => {
@@ -21,7 +21,7 @@ export default function CumulativeCheapHours({ data, threshold }) {
     return (
         <div className="chart-card">
             <h3>📊 Cumulative Cheap Hours</h3>
-            <p className="chart-subtitle">Running total of hours below {threshold} EUR/MWh — steeper slopes = more opportunity periods</p>
+            <p className="chart-subtitle">Running total of hours below {threshold} {currency.toUpperCase()}/MWh — steeper slopes = more opportunity periods</p>
             <ResponsiveContainer width="100%" height={350}>
                 <AreaChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
                     <defs>
